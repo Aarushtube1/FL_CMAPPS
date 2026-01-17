@@ -1,0 +1,9 @@
+{
+  "experiment_id": "repro_test_20260117_234713_8026623a",
+  "seed": 42,
+  "final_test_rmse": 11.36105644459627,
+  "final_test_mae": 9.536175283444981,
+  "n_test_samples": 147,
+  "rounds": 20,
+  "n_clients": 5
+}

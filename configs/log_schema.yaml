@@ -1,0 +1,37 @@
+version: 1.0
+frozen: true
+
+logging:
+  round_wise_fields:
+    - experiment_id
+    - seed
+    - round
+    - client_id
+    - participation_flag
+    - train_loss
+    - val_loss
+    - rmse
+    - mae
+    - num_samples
+    - timestamp
+
+  non_iid_fields:
+    - client_id
+    - num_samples
+    - mean_rul
+    - rul_variance
+    - operating_condition_entropy
+    - sensor_variance
+
+  outputs:
+    round_logs: experiments/{experiment_id}/logs/rounds.csv
+    non_iid_logs: experiments/{experiment_id}/logs/non_iid.csv
+
+experiment_policy:
+  generate_unique_experiment_id: true
+  save_config_with_results: true
+  prevent_overwrite: true
+
+notes: |
+  Mandatory logging schema.
+  Experiments without these logs are invalid per requirements.md.

@@ -1,0 +1,98 @@
+{
+  "s1a_analysis": {
+    "by_dataset": {
+      "FD001": {
+        "n_experiments": 3,
+        "avg_test_rmse": 10.983704137693998,
+        "convergence_rate": 1.0,
+        "divergence_rate": 0.0
+      },
+      "FD002": {
+        "n_experiments": 3,
+        "avg_test_rmse": 38.81356266012022,
+        "convergence_rate": 1.0,
+        "divergence_rate": 0.0
+      },
+      "FD004": {
+        "n_experiments": 3,
+        "avg_test_rmse": 61.87280796192311,
+        "convergence_rate": 1.0,
+        "divergence_rate": 0.0
+      }
+    },
+    "by_algorithm": {
+      "fedavg": {
+        "n_experiments": 3,
+        "avg_test_rmse": 36.914920937698376,
+        "std_test_rmse": 21.157454573420825,
+        "convergence_rate": 1.0,
+        "divergence_rate": 0.0,
+        "avg_improvement": 0.544440825268519,
+        "passed": true
+      },
+      "fedprox": {
+        "n_experiments": 3,
+        "avg_test_rmse": 37.015387746920126,
+        "std_test_rmse": 21.244385172011476,
+        "convergence_rate": 1.0,
+        "divergence_rate": 0.0,
+        "avg_improvement": 0.5439875737981378,
+        "passed": true
+      },
+      "scaffold": {
+        "n_experiments": 3,
+        "avg_test_rmse": 37.739766075118816,
+        "std_test_rmse": 20.08126252590522,
+        "convergence_rate": 1.0,
+        "divergence_rate": 0.0,
+        "avg_improvement": 0.515759036528337,
+        "passed": true
+      }
+    },
+    "convergence_summary": {},
+    "recommendations": [
+      {
+        "algorithm": "fedavg",
+        "decision": "PROMOTE",
+        "reason": "Baseline algorithm with acceptable convergence"
+      },
+      {
+        "algorithm": "fedprox",
+        "decision": "PROMOTE",
+        "reason": "Comparable or better than FedAvg"
+      },
+      {
+        "algorithm": "scaffold",
+        "decision": "PROMOTE",
+        "reason": "No divergence observed, convergence acceptable"
+      }
+    ]
+  },
+  "s1b_analysis": {
+    "by_participation": {
+      "1.0": {
+        "n_experiments": 9,
+        "avg_test_rmse": 37.22335825324578,
+        "std_test_rmse": 20.837657836595483,
+        "convergence_rate": 1.0,
+        "divergence_rate": 0.0
+      },
+      "0.7": {
+        "n_experiments": 9,
+        "avg_test_rmse": 37.42485889382614,
+        "std_test_rmse": 23.137742034212437,
+        "convergence_rate": 1.0,
+        "divergence_rate": 0.0
+      },
+      "0.5": {
+        "n_experiments": 9,
+        "avg_test_rmse": 35.09245558335699,
+        "std_test_rmse": 20.17476211739834,
+        "convergence_rate": 1.0,
+        "divergence_rate": 0.0
+      }
+    },
+    "degradation_smooth": true,
+    "stable_at_50": true
+  }
+}

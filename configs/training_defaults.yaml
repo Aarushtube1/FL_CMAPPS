@@ -1,0 +1,20 @@
+version: 1.0
+frozen: true
+
+training:
+  optimizer: adam
+  learning_rate: 0.001
+  weight_decay: 0.0
+  batch_size: 64
+  local_epochs: 1
+  max_rounds: 100
+  early_stopping: false
+  gradient_clipping: false
+
+federated:
+  participation_fractions: [1.0, 0.7, 0.5]
+  synchronous: true
+
+determinism:
+  enforce_cpu_for_validation: true
+  deterministic_ops: true

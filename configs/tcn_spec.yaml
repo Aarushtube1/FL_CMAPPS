@@ -1,0 +1,33 @@
+version: 1.0
+frozen: true
+
+
+model:
+  name: TCN
+  architecture:
+    blocks: 3
+    filters_per_block: 64
+    kernel_size: 3
+    dilations: [1, 2, 4]
+    activation: relu
+    normalization: batchnorm1d
+    dropout: 0.2
+  temporal_aggregation: global_average_pooling1d
+  head:
+    - dense: {units: 64, activation: relu}
+    - dense: {units: 1, activation: linear}
+output:
+  type: scalar
+  target: RUL
+
+training_defaults:
+  optimizer: adam
+  learning_rate: 0.001
+  weight_decay: 0.0
+  loss: mse
+  max_rounds: 100
+  local_epochs: 1
+  batch_size: 64
+
+notes: |
+  Frozen model specification — any change requires a new experiment ID and must be reported.

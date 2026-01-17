@@ -1,0 +1,17 @@
+{
+  "experiment_id": "validation_feddc/FD002_scaffold_42",
+  "seed": 42,
+  "created_at": "2026-01-18T00:56:17.151835",
+  "algorithm": "scaffold",
+  "dataset": "FD002",
+  "rounds": 30,
+  "local_epochs": 1,
+  "batch_size": 64,
+  "lr": 0.001,
+  "participation": 1.0,
+  "n_clients": 5,
+  "n_features": 17,
+  "alpha": null,
+  "phase": "6B",
+  "experiment_type": "validation_feddc"
+}

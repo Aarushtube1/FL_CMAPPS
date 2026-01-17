@@ -1,0 +1,17 @@
+{
+  "experiment_id": "validation_5clients_dropout/FD002_scaffold_p50_42",
+  "seed": 42,
+  "created_at": "2026-01-18T00:27:14.738704",
+  "algorithm": "scaffold",
+  "dataset": "FD002",
+  "rounds": 30,
+  "local_epochs": 1,
+  "batch_size": 64,
+  "lr": 0.001,
+  "participation": 0.5,
+  "n_clients": 5,
+  "n_features": 17,
+  "mu": null,
+  "phase": "6A",
+  "experiment_type": "partial_participation"
+}

@@ -1,0 +1,53 @@
+# Centralized Baseline Configuration
+# =================================
+# Use with: python scripts/train_centralized.py --config configs/centralized.yaml
+#
+# This config trains a single TCN model on pooled (centralized) data.
+# Serves as an upper-bound baseline for federated learning comparison.
+#
+# Required fields marked with [REQUIRED], others have sensible defaults.
+
+# ------------------------------------------------------------------------------
+# Dataset Configuration
+# ------------------------------------------------------------------------------
+dataset: FD001                  # [REQUIRED] One of: FD001, FD002, FD003, FD004
+
+# ------------------------------------------------------------------------------
+# Training Hyperparameters
+# ------------------------------------------------------------------------------
+epochs: 100                     # Number of training epochs
+batch_size: 64                  # Mini-batch size
+lr: 0.001                       # Learning rate (Adam optimizer)
+
+# ------------------------------------------------------------------------------
+# Reproducibility
+# ------------------------------------------------------------------------------
+seed: 42                        # Random seed for reproducibility
+                                # Seeds: random, numpy, torch, cuda
+
+# ------------------------------------------------------------------------------
+# Hardware
+# ------------------------------------------------------------------------------
+device: cpu                     # Device: 'cpu' or 'cuda' or 'cuda:0'
+
+# ------------------------------------------------------------------------------
+# Experiment Tracking
+# ------------------------------------------------------------------------------
+# experiment_id: null           # Optional: override auto-generated ID
+                                # Format: centralized_{dataset}_{timestamp}
+
+# ------------------------------------------------------------------------------
+# Output Control
+# ------------------------------------------------------------------------------
+verbose: true                   # Print progress every 10 epochs
+
+# ------------------------------------------------------------------------------
+# Notes
+# ------------------------------------------------------------------------------
+# Output structure:
+#   experiments/{experiment_id}/
+#   ├── config.json             # Saved configuration
+#   ├── best_model.pt           # Best model checkpoint (by val RMSE)
+#   └── logs/
+#       ├── history.json        # Full training history
+#       └── epochs.csv          # Epoch-wise metrics CSV

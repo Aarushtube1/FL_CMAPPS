@@ -1,0 +1,2 @@
+client_count,min_samples,max_samples,mean_samples,std_samples,cv_samples,gini_samples,heterogeneity_score
+2,114,180,147.0,33.0,0.22448979591836735,0.11224489795918369,0.18258759175999845

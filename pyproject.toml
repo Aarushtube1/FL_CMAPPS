@@ -1,0 +1,60 @@
+[project]
+name = "fl-cmapps"
+version = "1.0.0"
+description = "Federated Learning for RUL Prediction on C-MAPSS Dataset"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    {name = "FL-CMAPPS Team"}
+]
+
+[project.scripts]
+train-centralized = "scripts.train_centralized:main"
+run-local = "scripts.run_local:main"
+run-federated = "scripts.run_federated:main"
+
+[tool.ruff]
+# Ruff linter configuration
+line-length = 100
+target-version = "py310"
+src = ["src", "scripts", "tests"]
+
+[tool.ruff.lint]
+# Enable recommended rules
+select = [
+    "E",    # pycodestyle errors
+    "F",    # pyflakes
+    "W",    # pycodestyle warnings
+    "I",    # isort
+    "UP",   # pyupgrade
+    "B",    # flake8-bugbear
+    "SIM",  # flake8-simplify
+]
+ignore = [
+    "E501",   # line too long (handled by formatter)
+    "B008",   # function call in default argument
+    "SIM108", # ternary operator
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]  # Allow unused imports in __init__.py
+"tests/*" = ["B011"]      # Allow assert in tests
+
+[tool.ruff.lint.isort]
+known-first-party = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::UserWarning"
+]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true

@@ -1,0 +1,42 @@
+# Sensor selection configuration for C-MAPSS dataset
+# Based on literature: sensors with near-constant values are excluded.
+# Reference: Ramasso & Saxena (2014), Li et al. (2018)
+
+operational_settings:
+  include: true
+  columns: [0, 1, 2]  # op_setting_1, op_setting_2, op_setting_3
+  names:
+    - op_setting_1
+    - op_setting_2
+    - op_setting_3
+
+sensors:
+  # Sensor indices (0-based, after unit_id and cycle columns)
+  # Total 21 sensors in raw data (indices 0-20 after op settings)
+  # Exclude sensors with low variance: 0, 4, 5, 9, 10, 14, 20 (sensor 1,5,6,10,11,15,21)
+  selected_indices: [1, 2, 3, 6, 7, 8, 11, 12, 13, 15, 16, 17, 18, 19]
+  excluded_indices: [0, 4, 5, 9, 10, 14, 20]
+  names:
+    - sensor_2   # Total temperature at LPC outlet
+    - sensor_3   # Total temperature at HPC outlet
+    - sensor_4   # Total temperature at LPT outlet
+    - sensor_7   # Total pressure at HPC outlet
+    - sensor_8   # Physical fan speed
+    - sensor_9   # Physical core speed
+    - sensor_12  # HPC outlet static pressure
+    - sensor_13  # Ratio of fuel flow to Ps30
+    - sensor_14  # Corrected fan speed
+    - sensor_16  # Bypass ratio
+    - sensor_17  # Bleed enthalpy
+    - sensor_18  # Demanded fan speed
+    - sensor_19  # Demanded corrected fan speed
+    - sensor_20  # HPT coolant bleed
+
+# Column mapping in raw C-MAPSS files:
+# 0: unit_id
+# 1: cycle
+# 2-4: operational settings (3 columns)
+# 5-25: sensor measurements (21 columns, sensors 1-21)
+
+notes: |
+  This config is locked per design freeze. Changes require new experiment ID.

@@ -1,0 +1,41 @@
+{
+  "sample_distribution": {
+    "client_count": 2,
+    "total_samples": 294,
+    "min": 114,
+    "max": 180,
+    "mean": 147.0,
+    "std": 33.0,
+    "cv": 0.22448979591836735,
+    "gini": 0.11224489795918369,
+    "imbalance_ratio": 1.5789473684210527
+  },
+  "rul_distribution": {
+    "mean_rul_range": [
+      99.33333333333331,
+      118.73333333333332
+    ],
+    "mean_rul_avg": 109.03333333333332,
+    "mean_rul_std": 9.700000000000003,
+    "mean_rul_cv": 0.0889636196881688,
+    "mean_rul_gini": 0.04448180984408445,
+    "variance_avg": 404.6977777777778,
+    "variance_std": 245.5244444444445,
+    "variance_cv": 0.6066859220048981
+  },
+  "operating_conditions": {
+    "entropy_min": 3.767016941040876,
+    "entropy_max": 3.99424599242436,
+    "entropy_mean": 3.880631466732618,
+    "entropy_std": 0.11361452569174202,
+    "entropy_cv": 0.029277329389745487
+  },
+  "sensor_variance": {
+    "mean": 12.805990540988084,
+    "std": 4.963853213393154,
+    "cv": 0.38761962204371214,
+    "min": 7.84213732759493,
+    "max": 17.769843754381238
+  },
+  "heterogeneity_score": 0.18258759175999845
+}

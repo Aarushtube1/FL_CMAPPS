@@ -1,0 +1,14 @@
+{
+  "experiment_id": "demo_fedavg_20260117_231415_8a11f245",
+  "seed": 42,
+  "created_at": "2026-01-17T23:14:15.023708",
+  "algorithm": "fedavg",
+  "dataset": "FD001",
+  "rounds": 20,
+  "local_epochs": 1,
+  "batch_size": 64,
+  "lr": 0.001,
+  "participation": 1.0,
+  "n_clients": 5,
+  "n_features": 17
+}

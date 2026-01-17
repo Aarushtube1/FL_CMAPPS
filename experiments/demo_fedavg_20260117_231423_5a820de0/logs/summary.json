@@ -1,0 +1,7 @@
+{
+  "experiment_id": "demo_fedavg_20260117_231423_5a820de0",
+  "algorithm": "fedavg",
+  "dataset": "FD001",
+  "test_rmse": 11.36105644459627,
+  "test_mae": 9.536175283444981
+}

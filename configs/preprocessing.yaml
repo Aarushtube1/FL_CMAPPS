@@ -1,0 +1,21 @@
+version: 1.0
+frozen: true
+
+
+preprocessing:
+  window_length: 30
+  stride: 1
+  features:
+    include_operational_settings: true
+    sensors_config: sensors.yaml
+  rul:
+    cap: 125
+  normalization:
+    method: global_zscore
+    stats_source: training_split
+    save_path: data/processed/norm_params.json
+  window_generation:
+    seed_controlled: true
+
+notes: |
+  This file is locked by design freeze. Changes require a new experiment ID.

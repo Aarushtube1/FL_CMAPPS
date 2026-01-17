@@ -1,0 +1,91 @@
+# Federated Learning Configuration
+# =================================
+# Use with: python scripts/run_federated.py --config configs/federated.yaml
+#
+# This config runs federated learning with configurable algorithms.
+# Supported algorithms: fedavg, fedprox, scaffold
+#
+# Required fields marked with [REQUIRED], others have sensible defaults.
+
+# ------------------------------------------------------------------------------
+# Dataset Configuration
+# ------------------------------------------------------------------------------
+dataset: FD001                  # [REQUIRED] One of: FD001, FD002, FD003, FD004
+
+# ------------------------------------------------------------------------------
+# Algorithm Selection
+# ------------------------------------------------------------------------------
+algorithm: fedavg               # [REQUIRED] One of: fedavg, fedprox, scaffold
+                                # - fedavg:   Federated Averaging (McMahan et al., 2017)
+                                # - fedprox:  FedAvg + proximal term (Li et al., 2018)
+                                # - scaffold: Stochastic Controlled Averaging (Karimireddy et al., 2020)
+
+# ------------------------------------------------------------------------------
+# Federated Training Parameters
+# ------------------------------------------------------------------------------
+rounds: 100                     # Number of communication rounds
+local_epochs: 1                 # Local training epochs per round
+participation: 1.0              # Client participation fraction (0.0-1.0)
+                                # 1.0 = 100% participation (all clients)
+                                # 0.7 = 70% randomly selected each round
+                                # 0.5 = 50% randomly selected each round
+
+# ------------------------------------------------------------------------------
+# Training Hyperparameters
+# ------------------------------------------------------------------------------
+batch_size: 64                  # Mini-batch size for local training
+lr: 0.001                       # Learning rate (Adam optimizer)
+
+# ------------------------------------------------------------------------------
+# Algorithm-Specific Parameters
+# ------------------------------------------------------------------------------
+# FedProx-specific (only used when algorithm=fedprox)
+mu: 0.01                        # Proximal term coefficient
+                                # Higher mu = stronger regularization toward global model
+                                # Typical range: 0.001 to 1.0
+
+# SCAFFOLD-specific: no additional parameters (control variates automatic)
+
+# ------------------------------------------------------------------------------
+# Client Selection (for testing)
+# ------------------------------------------------------------------------------
+# max_clients: null             # Optional: limit number of clients for quick tests
+                                # Set to e.g. 5 to train only first 5 clients
+
+# ------------------------------------------------------------------------------
+# Reproducibility
+# ------------------------------------------------------------------------------
+seed: 42                        # Random seed for reproducibility
+                                # Seeds: random, numpy, torch, cuda
+
+# ------------------------------------------------------------------------------
+# Hardware
+# ------------------------------------------------------------------------------
+device: cpu                     # Device: 'cpu' or 'cuda' or 'cuda:0'
+
+# ------------------------------------------------------------------------------
+# Experiment Tracking
+# ------------------------------------------------------------------------------
+# experiment_id: null           # Optional: override auto-generated ID
+                                # Format: {algorithm}_{dataset}_{timestamp}
+
+# ------------------------------------------------------------------------------
+# Output Control
+# ------------------------------------------------------------------------------
+verbose: true                   # Print progress every round
+
+# ------------------------------------------------------------------------------
+# Notes
+# ------------------------------------------------------------------------------
+# Output structure:
+#   experiments/{experiment_id}/
+#   ├── config.json             # Saved configuration
+#   ├── final_model.pt          # Final global model checkpoint
+#   └── logs/
+#       ├── rounds.csv          # Round-wise metrics (per log_schema.yaml)
+#       ├── non_iid.csv         # Per-client non-IID statistics
+#       └── summary.json        # Final experiment summary
+#
+# Log schema fields (rounds.csv):
+#   round, timestamp, n_participating_clients, global_loss, global_rmse,
+#   global_mae, round_time_sec, lr

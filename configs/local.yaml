@@ -1,0 +1,62 @@
+# Local-Only Baseline Configuration
+# ==================================
+# Use with: python scripts/run_local.py --config configs/local.yaml
+#
+# This config trains separate models per client (engine) without federation.
+# Serves as a lower-bound baseline showing performance without collaboration.
+#
+# Required fields marked with [REQUIRED], others have sensible defaults.
+
+# ------------------------------------------------------------------------------
+# Dataset Configuration
+# ------------------------------------------------------------------------------
+dataset: FD001                  # [REQUIRED] One of: FD001, FD002, FD003, FD004
+
+# ------------------------------------------------------------------------------
+# Training Hyperparameters
+# ------------------------------------------------------------------------------
+epochs: 100                     # Training epochs per client
+batch_size: 64                  # Mini-batch size
+lr: 0.001                       # Learning rate (Adam optimizer)
+
+# ------------------------------------------------------------------------------
+# Client Selection (for testing)
+# ------------------------------------------------------------------------------
+# max_clients: null             # Optional: limit number of clients for quick tests
+                                # Set to e.g. 5 to train only first 5 clients
+
+# ------------------------------------------------------------------------------
+# Reproducibility
+# ------------------------------------------------------------------------------
+seed: 42                        # Random seed for reproducibility
+                                # Seeds: random, numpy, torch, cuda
+
+# ------------------------------------------------------------------------------
+# Hardware
+# ------------------------------------------------------------------------------
+device: cpu                     # Device: 'cpu' or 'cuda' or 'cuda:0'
+
+# ------------------------------------------------------------------------------
+# Experiment Tracking
+# ------------------------------------------------------------------------------
+# experiment_id: null           # Optional: override auto-generated ID
+                                # Format: local_{dataset}_{timestamp}
+
+# ------------------------------------------------------------------------------
+# Output Control
+# ------------------------------------------------------------------------------
+verbose: true                   # Print progress every 10 clients
+
+# ------------------------------------------------------------------------------
+# Notes
+# ------------------------------------------------------------------------------
+# Output structure:
+#   experiments/{experiment_id}/
+#   ├── config.json             # Saved configuration
+#   └── logs/
+#       ├── clients.csv         # Per-client metrics (RMSE, MAE, samples)
+#       └── summary.json        # Aggregated metrics summary
+#
+# Metrics reported:
+#   - Weighted RMSE/MAE: weighted by test sample count per client
+#   - Average RMSE/MAE: unweighted per-client average

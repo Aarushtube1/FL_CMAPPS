@@ -1,0 +1,26 @@
+[
+  {
+    "algorithm": "FedAvg",
+    "recommendation": "Recommended",
+    "note": "Low heterogeneity makes FedAvg a good choice",
+    "priority": 1
+  },
+  {
+    "algorithm": "FedProx",
+    "recommendation": "Recommended",
+    "note": "Proximal term helps with moderate heterogeneity (CV=0.18)",
+    "priority": 2
+  },
+  {
+    "algorithm": "SCAFFOLD",
+    "recommendation": "Optional",
+    "note": "Overhead may not be justified for low heterogeneity",
+    "priority": 3
+  },
+  {
+    "algorithm": "FedDC",
+    "recommendation": "Optional",
+    "note": "Consider if SCAFFOLD doesn't meet performance targets",
+    "priority": 4
+  }
+]

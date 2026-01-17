@@ -1,0 +1,10 @@
+{
+  "experiment_id": "fedavg_FD001_20260117_191508_57c7d15c",
+  "algorithm": "fedavg",
+  "dataset": "FD001",
+  "test_rmse": 30.066095888614655,
+  "test_mae": 28.668676614761353,
+  "total_time": 23.84286880493164,
+  "avg_round_time": 0.23712655782699585,
+  "final_round_rmse": 9.593328169079832
+}
